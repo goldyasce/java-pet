@@ -1,12 +1,13 @@
-package com.goldyasce.web;
+package com.goldyasce.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApplicationRun {
+public class BlogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationRun.class);
+        SpringApplication.run(BlogApplication.class, args);
     }
+
 }
