@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -19,27 +20,15 @@ public class BlogController {
         this.postRepository = postRepository;
     }
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                        Map<String, Object> model) {
-        model.put("name", name);
 
-        return "hello";
-    }
-
-    @GetMapping("/posts")
-    public String getPosts(Map<String, Object> model) {
+    @GetMapping
+    public String main(Map<String, Object> model) {
         model.put("posts", postRepository.findAll());
 
         return "main";
     }
 
-    @GetMapping
-    public String main() {
-        return "main";
-    }
-
-    @PostMapping
+    @PostMapping("add")
     public String add(@RequestParam String tag,
                       @RequestParam String text,
                       Map<String, Object> model) {
@@ -48,6 +37,25 @@ public class BlogController {
         postRepository.save(newPost);
 
         model.put("posts", postRepository.findAll());
+
+        return "main";
+    }
+
+    @PostMapping("search")
+    public String search(@RequestParam String tag,
+                         Map<String, Object> model) {
+        List<Post> posts;
+
+        if (tag != null && !tag.isEmpty()) {
+            posts = postRepository.findByTag(tag);
+            if (posts.isEmpty()) {
+                posts = postRepository.findAll();
+            }
+        } else {
+            posts = postRepository.findAll();
+        }
+
+        model.put("posts", posts);
 
         return "main";
     }
