@@ -5,62 +5,95 @@
     <title>Blog</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <form>
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
+<nav class="container nav-extended">
+    <div class="nav-wrapper teal">
+        <a href="#!" class="brand-logo">My blog</a>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
+                    <i class="material-icons">add_circle</i>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">
+                    <i class="material-icons">search</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Add Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container">
+            <form class="col s12" method="post">
+                <div class="row">
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">title</i>
+                        <input name="tag" id="post_tag" type="text" class="validate">
+                        <label for="post_tag">Tag</label>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea id="post_text" name="text" type="text" class="materialize-textarea validate"></textarea>
+                        <label for="post_text">Text</label>
+                    </div>
+                </div>
+                <button class="btn modal-close waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
         </div>
-    </nav>
-    <div class="row">
-        <form class="col s12" method="post">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Tag" name="tag" id="post_tag" type="text" class="validate">
-                    <label for="post_tag">Post tag</label>
-                </div>
+    </div>
+</div>
+
+<!-- Search Modal -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <form class="center-align" method="post">
+            <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input name="text" id="post_text" type="text" class="validate">
-                    <label for="post_text">Post text</label>
-                </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">Submit
-                <i class="material-icons right">send</i>
-            </button>
+            <button class="btn modal-close waves-effect waves-light" type="submit">Search</button>
         </form>
     </div>
-
-    <h1>Список постов:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tag</th>
-                <th>Text</th>
-            </tr>
-        </thead>
-        <tbody>
+</div>
+<div class="container">
+    <div class="row">
         {{#posts}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{tag}}</td>
-                <td>{{text}}</td>
-            </tr>
+        <div class="col s6 m6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">{{tag}}</span>
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header">
+                                <span class="card-title"><i class="material-icons">expand_more</i></span>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>{{text}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         {{/posts}}
-        </tbody>
-    </table>
+    </div>
+</div>
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
