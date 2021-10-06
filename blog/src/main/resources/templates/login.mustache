@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper blue-grey darken-2">
+        <a href="#!" class="brand-logo">My Bloggo</a>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a class="modal-trigger" href="#modal1">Sing In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Add Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="container">
+            <form class="col s12" method="post" action="/login">
+                <div class="row">
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <input name="username" id="username" type="text" class="validate">
+                        <label for="username">Login</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                <button class="btn modal-close waves-effect waves-light" type="submit">Sing in
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
+</body>
+</html>

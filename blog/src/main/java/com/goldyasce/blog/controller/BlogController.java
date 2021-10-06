@@ -20,8 +20,12 @@ public class BlogController {
         this.postRepository = postRepository;
     }
 
+    @GetMapping("/")
+    public String greeting() {
+        return "greeting";
+    }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model) {
         model.put("posts", postRepository.findAll());
 
