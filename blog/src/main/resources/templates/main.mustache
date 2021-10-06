@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Blog</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,24 +10,25 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-<nav class="container nav-extended">
-    <div class="nav-wrapper teal">
-        <a href="#!" class="brand-logo">My blog</a>
+<nav>
+    <div class="nav-wrapper blue-grey darken-2">
+        <a href="#!" class="brand-logo">My Bloggo</a>
         <ul class="right hide-on-med-and-down">
             <li>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
-                    <i class="material-icons">add_circle</i>
+                <a class="modal-trigger" href="#modal1">
+                    <i class="material-icons left">add_circle</i>Add post
                 </a>
             </li>
             <li>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">
-                    <i class="material-icons">search</i>
+                <a class="modal-trigger" href="#modal2">
+                    <i class="material-icons left">search</i>Search posts
                 </a>
             </li>
+            <li><a href="/"><i class="material-icons">refresh</i></a></li>
+            <li><a href="/"><i class="material-icons">more_vert</i></a></li>
         </ul>
     </div>
 </nav>
-
 
 <!-- Add Modal Structure -->
 <div id="modal1" class="modal">
@@ -44,7 +45,9 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">mode_edit</i>
-                        <textarea id="post_text" name="text" type="text" class="materialize-textarea validate"></textarea>
+                        <textarea id="post_text" name="text" type="text"
+                                class="materialize-textarea validate"
+                                data-length="1000"></textarea>
                         <label for="post_text">Text</label>
                     </div>
                 </div>
@@ -76,6 +79,8 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">{{tag}}</span>
+                    <span>{{text}}</span>
+                    <!--
                     <ul class="collapsible">
                         <li>
                             <div class="collapsible-header">
@@ -86,6 +91,7 @@
                             </div>
                         </li>
                     </ul>
+                    -->
                 </div>
             </div>
         </div>
